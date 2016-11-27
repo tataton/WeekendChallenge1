@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Weekend Challenge 1: Payroll Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Payroll Calculator</h1>
+    </header>
+    <main>
+      <section id="payrollReport"></section>
+      <section id="addEmpSection">
+        <h2>Would you like to add an employee to payroll?</h2>
+        <label>Employee First Name:</label><input type="text">
+        <label>Employee Last Name:</label><input type="text">
+        <label>ID Number:</label><input type="text">
+        <label>Job Title:</label><input type="text">
+        <label>Annual Salary:</label><input type="text">
+        <button id="addButton" onclick="addEmployee()">Add this employee</button>
+        <button id="addConfirm" class="hidden">Confirm</button>
+        <p id="addReport"></p>
+      </section>
+      <section id="removeEmpSection">
+        <h2>Would you like to remove an employee from payroll? Search by:</h2>
+        <label>Employee First Name:</label><input type="text">
+        <label>Employee Last Name:</label><input type="text">
+        <label>ID Number:</label><input type="text">
+        <button id="removeButton" onclick="removeEmployee()">Remove this employee</button>
+        <button id="removeConfirm" class="hidden">Confirm</button>
+        <p id="removeReport"></p>
+      </section>
+    </main>
+  </body>
+</html>
