@@ -112,7 +112,7 @@ var removeEmployee = function(){
     // If user searches by lastName, but not employeeID, could find 0, 1, or multiple matches.
     for (i = 0; i < employeeArray.length; i++) {
       if (employeeArray[i].lastName == lastName) {
-        lastNamesFound.pop(i);
+        lastNamesFound.push(i);
       }
     }
     if (lastNamesFound.length === 0) {
@@ -142,7 +142,7 @@ var removeEmployee = function(){
     // If we got to this point, the employeeID didn't match. Now check last names.
     for (i = 0; i < employeeArray.length; i++) {
       if (employeeArray[i].lastName == lastName) {
-        lastNamesFound.pop(i);
+        lastNamesFound.push(i);
       }
       if (lastNamesFound.length === 0) {
         removeReport.innerHTML = "<p>No employee found with either employee ID number " + employeeID + " or last name " + lastName + ".</p>";
@@ -166,10 +166,10 @@ var confirmRemove = function(index, mismatch, value) {
   removeDeny.className = "visible";
   var warningText = "";
   if (mismatch == "employeeID") {
-    warningText = "<p>An employee with last name " + employeeArray[index].lastName + " was found, but does not have employee ID number " + employeeArray[index].employeeID + ".</p>\n";
+    warningText = "<p>An employee with last name " + employeeArray[index].lastName + " was found, but does not have employee ID number " + value + ".</p>\n";
   }
   if (mismatch == "lastName") {
-    warningText = "<p>An employee with ID number " + employeeArray[index].employeeID + " was found, but does not have last name " + employeeArray[index].lastName + ".</p>\n";
+    warningText = "<p>An employee with ID number " + employeeArray[index].employeeID + " was found, but does not have last name " + value + ".</p>\n";
   }
   removeReport.innerHTML = warningText + "Remove " + employeeArray[index].firstName + " " + employeeArray[index].lastName + ", ID number " + employeeArray[index].employeeID + "? (Press \"Confirm\" to continue, or \"Go Back\" to modify search.)";
   toBeDeleted = index;
@@ -180,6 +180,7 @@ var completeRemoval = function() {
   removeButton.className = "visible";
   removeConfirm.className = "hidden";
   removeDeny.className = "hidden";
+  var removeData = removeEmpSection.querySelectorAll("input");
   removeReport.innerHTML = employeeArray[toBeDeleted].firstName + " " + employeeArray[toBeDeleted].lastName + " (ID number " + employeeArray[toBeDeleted].employeeID + ") removed from payroll.";
   employeeArray.splice(toBeDeleted, 1);
   calcPayroll();

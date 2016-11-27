@@ -14,18 +14,18 @@
       <section id="payrollReport"></section>
       <section id="addEmpSection">
         <h2>Would you like to add an employee to payroll?</h2>
-        <label>Employee First Name:</label><input type="text">
-        <label>Employee Last Name:</label><input type="text">
-        <label>ID Number:</label><input type="text">
-        <label>Job Title:</label><input type="text">
-        <label>Annual Salary:</label><input type="text">
+        <div><label>Employee First Name:<input type="text"></label></div>
+        <div><label>Employee Last Name:<input type="text"></label></div>
+        <div><label>ID Number:<input type="text"></label></div>
+        <div><label>Job Title:<input type="text"></label></div>
+        <div><label>Annual Salary:<input type="text"></label></div>
         <button class="visible" onclick="addEmployee()">Add this employee</button>
         <p id="addReport"></p>
       </section>
       <section id="removeEmpSection">
         <h2>Would you like to remove an employee from payroll? Search by:</h2>
-        <label>Employee Last Name:</label><input type="text">
-        <label>ID Number:</label><input type="text">
+        <div><label>Employee Last Name:<input type="text"></label></div>
+        <div><label>ID Number:<input type="text"></label></div>
         <button id="removeButton" class="visible" onclick="removeEmployee()">Remove this employee</button>
         <button id="removeConfirm" class="hidden" onclick="completeRemoval()">Confirm</button>
         <button id="removeDeny" class="hidden" onclick="goBack()">Go Back</button>
