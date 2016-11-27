@@ -1,7 +1,5 @@
 /* Script adds and removes employee objects from a payroll array,
-and outputs the annual and monthly payroll cost to the DOM.
-
-*/
+and outputs the annual and monthly payroll cost to the DOM. */
 
 var employeeArray = [];
 
@@ -151,7 +149,7 @@ var removeEmployee = function(){
         removeReport.innerHTML = "<p>Multiple employees found with last name " + lastName + ", but none of them have employee ID number " + employeeID + ". Please modify your search.</p>";
         return;
       } else if (lastNamesFound.length === 1) {
-        confirmRemove(i, "employeeID", employeeID);
+        confirmRemove(lastNamesFound[0], "employeeID", employeeID);
         return;
       }
     }
