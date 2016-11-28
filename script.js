@@ -15,7 +15,7 @@ function Employee(firstName, lastName, employeeID, jobTitle, salary){
   this.salary = salary;
 }
 
-var payrollReport, addReport, addEmpSection, removeReport, removeEmpSection, removeButton, removeConfirm, removeDeny;
+var payrollReport, addReport, addEmpSection, removeReport, removeEmpSection, removeButton, removeConfirm, removeDeny, addData, removeData;
 // Global DOM references, defined after window.onload.
 
 window.onload = function() {
@@ -27,6 +27,8 @@ window.onload = function() {
   removeButton = document.getElementById("removeButton");
   removeConfirm = document.getElementById("removeConfirm");
   removeDeny = document.getElementById("removeDeny");
+  addData = addEmpSection.querySelectorAll("input");
+  removeData = removeEmpSection.querySelectorAll("input");
   calcPayroll();
 };
 
@@ -43,7 +45,6 @@ var addEmployee = function() {
   fields in the DOM. Verifies that all text fields are filled, and that
   the employeeID isn't already in the array. If those tests pass, adds the
   employee to employeeArray. */
-  var addData = addEmpSection.querySelectorAll("input");
   // Make sure all fields are filled.
   for (var i = 0; i < 5; i++) {
     if (addData[i].value === "") {
@@ -66,14 +67,17 @@ var addEmployee = function() {
   }
   employeeArray.push(new Employee(firstName, lastName, employeeID, jobTitle, salary));
   // Tests passed, employee is added.
+  // Re-calculate total payroll.
   calcPayroll();
-  // Re-calculates total payroll.
+  clearAddFields();
   addReport.innerHTML = "<p>" + firstName + " " + lastName + " added successfully to payroll.</p>";
-  for (i = 0; i < 5; i++) {
-    addData[i].value = "";
-    // Clears input fields.
-  }
   return;
+};
+
+var clearAddFields = function() {
+  for (var i = 0; i < 5; i++) {
+    addData[i].value = "";}
+  addReport.innerHTML = "";
 };
 
 var removeEmployee = function(){
@@ -84,7 +88,6 @@ var removeEmployee = function(){
   and makes no changes. If search finds just one match, function asks for
   confirmation of deletion, deletes the employee, reports confirmation,
   and clears the input boxes. */
-  var removeData = removeEmpSection.querySelectorAll("input");
   var lastName = removeData[0].value;
   var employeeID = removeData[1].value;
   var noEmpID = (employeeID.length === 0);
@@ -178,15 +181,17 @@ var completeRemoval = function() {
   removeButton.className = "visible";
   removeConfirm.className = "hidden";
   removeDeny.className = "hidden";
-  var removeData = removeEmpSection.querySelectorAll("input");
+  clearRemoveFields();
   removeReport.innerHTML = employeeArray[toBeDeleted].firstName + " " + employeeArray[toBeDeleted].lastName + " (ID number " + employeeArray[toBeDeleted].employeeID + ") removed from payroll.";
   employeeArray.splice(toBeDeleted, 1);
   calcPayroll();
-  for (var i = 0; i < 2; i++) {
-    removeData[i].value = "";
-    // Clears input fields.
-  }
   toBeDeleted = undefined;
+};
+
+var clearRemoveFields = function() {
+  for (var i = 0; i < 2; i++) {
+    removeData[i].value = "";}
+  removeReport.innerHTML = "";
 };
 
 var goBack = function() {

@@ -11,26 +11,30 @@
       <h1>Payroll Calculator</h1>
     </header>
     <main>
-      <section id="payrollReport"></section>
-      <section id="addEmpSection">
-        <h2>Would you like to add an employee to payroll?</h2>
-        <div><label>Employee First Name:<input type="text"></label></div>
-        <div><label>Employee Last Name:<input type="text"></label></div>
-        <div><label>ID Number:<input type="text"></label></div>
-        <div><label>Job Title:<input type="text"></label></div>
-        <div><label>Annual Salary:<input type="text"></label></div>
+    <section id="payrollReport"></section>
+    <div class="tabGroup">
+      <input type="radio" name="tabGroup1" id="rad1" class="tab1" onclick="clearRemoveFields()" checked="checked"/>
+      <label for="rad1">Add Employee</label>
+      <input type="radio" name="tabGroup1" id="rad2" class="tab2" onclick="clearAddFields()"/>
+      <label for="rad2">Remove Employee</label>
+      <div class="tab1" id="addEmpSection">
+        <div><p>Employee First Name:</p><input type="text"></div>
+        <div><p>Employee Last Name:</p><input type="text"></div>
+        <div><p>ID Number:</p><input type="text"></div>
+        <div><p>Job Title:</p><input type="text"></div>
+        <div><p>Annual Salary:</p><input type="text"></div>
         <button class="visible" onclick="addEmployee()">Add this employee</button>
         <p id="addReport"></p>
-      </section>
-      <section id="removeEmpSection">
-        <h2>Would you like to remove an employee from payroll? Search by:</h2>
-        <div><label>Employee Last Name:<input type="text"></label></div>
-        <div><label>ID Number:<input type="text"></label></div>
+      </div>
+      <div class="tab2" id="removeEmpSection">
+        <p style="font-weight: bold;">Search by:</p>
+        <div><p>Employee Last Name:</p><input type="text"></div>
+        <div><p>ID Number:</p><input type="text"></div>
         <button id="removeButton" class="visible" onclick="removeEmployee()">Remove this employee</button>
         <button id="removeConfirm" class="hidden" onclick="completeRemoval()">Confirm</button>
         <button id="removeDeny" class="hidden" onclick="goBack()">Go Back</button>
         <p id="removeReport"></p>
-      </section>
-    </main>
+      </div>
+    </div>
   </body>
 </html>
