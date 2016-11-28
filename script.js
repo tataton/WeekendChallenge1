@@ -70,7 +70,7 @@ var addEmployee = function() {
   // Re-calculate total payroll.
   calcPayroll();
   clearAddFields();
-  addReport.innerHTML = "<p>" + firstName + " " + lastName + " added successfully to payroll.</p>";
+  addReport.innerHTML = "<p>" + firstName + " " + lastName + " (" + jobTitle + ", Employee ID " + employeeID + ", with annual salary $" + salary + ") added successfully to payroll.</p>";
   return;
 };
 
